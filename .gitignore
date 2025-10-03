@@ -70,5 +70,5 @@ temp/
 Thumbs.db
 .DS_Store
 
-# Collaboration session files
-.collaboration/
+# Local Claude settings
+.claude
