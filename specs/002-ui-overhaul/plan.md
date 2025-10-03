@@ -164,55 +164,89 @@ blog/
 **Output**: ✅ [research.md](./research.md) complete with 10 design decisions documented
 
 ## Phase 1: Design & Contracts
-*Prerequisites: research.md complete*
 
-1. **Extract entities from feature spec** → `data-model.md`:
-   - Entity name, fields, relationships
-   - Validation rules from requirements
-   - State transitions if applicable
+**Status**: ✅ COMPLETE
 
-2. **Generate API contracts** from functional requirements:
-   - For each user action → endpoint
-   - Use standard REST/GraphQL patterns
-   - Output OpenAPI/GraphQL schema to `/contracts/`
+**Design Artifacts Created**:
 
-3. **Generate contract tests** from contracts:
-   - One test file per endpoint
-   - Assert request/response schemas
-   - Tests must fail (no implementation yet)
+1. **Data Model** (`data-model.md`):
+   - 4 key entities defined (Design Tokens, Theme State, Component Styles, Theme Manager)
+   - 95 CSS custom properties documented
+   - Token categories and relationships mapped
+   - Accessibility validation rules specified
 
-4. **Extract test scenarios** from user stories:
-   - Each story → integration test scenario
-   - Quickstart test = story validation steps
+2. **Contracts** (`contracts/`):
+   - `theme-tokens.md`: Design token system contract (95 tokens, WCAG AA compliance)
+   - `theme-manager.md`: JavaScript API contract (7 public methods, localStorage integration)
+   - `component-styles.md`: Component styling requirements (9 component categories)
 
-5. **Update agent file incrementally** (O(1) operation):
-   - Run `.specify/scripts/powershell/update-agent-context.ps1 -AgentType copilot`
-     **IMPORTANT**: Execute it exactly as specified above. Do not add or remove any arguments.
-   - If exists: Add only NEW tech from current plan
-   - Preserve manual additions between markers
-   - Update recent changes (keep last 3)
-   - Keep under 150 lines for token efficiency
-   - Output to repository root
+3. **Quickstart Tests** (`quickstart.md`):
+   - 13 comprehensive test scenarios
+   - Covers functionality, accessibility, performance, error handling
+   - 30-45 minute complete test suite
+   - Success criteria defined
 
-**Output**: data-model.md, /contracts/*, failing tests, quickstart.md, agent-specific file
+**Key Design Decisions**:
+- CSS custom properties enable runtime theme switching without recompilation
+- Three-tier preference system (localStorage → system → default)
+- Inline critical script prevents flash of wrong theme
+- Theme-aware components reference tokens, never hard-coded values
+- Atrium brand identity consistent across both themes and future portal
+
+**Output**: ✅ Complete design documentation ready for task generation
+
+---
+
+**Post-Design Constitution Re-check**: ✅ PASS - All principles satisfied, no complexity violations introduced
+
+---
 
 ## Phase 2: Task Planning Approach
 *This section describes what the /tasks command will do - DO NOT execute during /plan*
 
 **Task Generation Strategy**:
-- Load `.specify/templates/tasks-template.md` as base
-- Generate tasks from Phase 1 design docs (contracts, data model, quickstart)
-- Each contract → contract test task [P]
-- Each entity → model creation task [P] 
-- Each user story → integration test task
-- Implementation tasks to make tests pass
 
-**Ordering Strategy**:
-- TDD order: Tests before implementation 
-- Dependency order: Models before services before UI
-- Mark [P] for parallel execution (independent files)
+### File-Based Task Organization
 
-**Estimated Output**: 25-30 numbered, ordered tasks in tasks.md
+**SCSS Token System** (Sequential):
+1. Create `_tokens.scss` with 95 CSS custom properties
+2. Create `_theme-transitions.scss` for smooth transitions
+3. Update `main.scss` to import new files
+
+**Component Style Updates** (Parallel after tokens exist):
+4. [P] Update `_components.scss` with theme-aware styles
+5. [P] Update `_typography.scss` with theme-aware typography
+6. [P] Update `_layout.scss` with theme-aware layout
+
+**JavaScript Theme Manager** (Parallel with styles):
+7. [P] Create ThemeManager class in `progressive.js`
+8. [P] Create inline `theme-script.html` include
+
+**Template Updates** (Sequential after JS exists):
+9. Update `default.html` layout with theme initialization
+10. Update `header.html` with theme toggle button
+11. Create Atrium preview card component (if needed)
+
+**Data Documentation** (Parallel anytime):
+12. [P] Update `design-tokens.yml` with extended token documentation
+
+**Testing & Validation** (Sequential, last):
+13. Execute quickstart.md test scenarios (manual)
+14. Run Lighthouse audits (Performance & Accessibility)
+15. Verify WCAG AA contrast ratios
+
+**Estimated Task Count**: 15-18 tasks
+
+**Ordering Rationale**:
+- Tokens must exist before components can reference them
+- Components and JavaScript can be built in parallel
+- Templates require JavaScript to be ready
+- Testing happens after all implementation complete
+
+**Parallel Opportunities**:
+- Component SCSS files (after tokens)
+- JavaScript and SCSS work simultaneously
+- Documentation updates anytime
 
 **IMPORTANT**: This phase is executed by the /tasks command, NOT by /plan
 
@@ -224,30 +258,36 @@ blog/
 **Phase 5**: Validation (run tests, execute quickstart.md, performance validation)
 
 ## Complexity Tracking
-*Fill ONLY if Constitution Check has violations that must be justified*
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+**No complexity violations** - All constitutional principles satisfied without deviation.
 
+This feature enhances the existing Phase 1 structure using standard web technologies (CSS custom properties, vanilla JavaScript) without introducing new frameworks, dependencies, or architectural complexity.
 
+---
 ## Progress Tracking
 *This checklist is updated during execution flow*
 
 **Phase Status**:
-- [ ] Phase 0: Research complete (/plan command)
-- [ ] Phase 1: Design complete (/plan command)
-- [ ] Phase 2: Task planning complete (/plan command - describe approach only)
+- [x] Phase 0: Research complete (/plan command) ✅
+- [x] Phase 1: Design complete (/plan command) ✅
+- [x] Phase 2: Task planning complete (/plan command - describe approach only) ✅
 - [ ] Phase 3: Tasks generated (/tasks command)
 - [ ] Phase 4: Implementation complete
 - [ ] Phase 5: Validation passed
 
 **Gate Status**:
-- [ ] Initial Constitution Check: PASS
-- [ ] Post-Design Constitution Check: PASS
-- [ ] All NEEDS CLARIFICATION resolved
-- [ ] Complexity deviations documented
+- [x] Initial Constitution Check: PASS ✅
+- [x] Post-Design Constitution Check: PASS ✅
+- [x] All NEEDS CLARIFICATION resolved ✅
+- [x] Complexity deviations documented: N/A (no violations) ✅
+
+**Artifacts Generated**:
+- [x] research.md (10 design decisions) ✅
+- [x] data-model.md (4 entities, 95 tokens) ✅
+- [x] contracts/ (3 contract files) ✅
+- [x] quickstart.md (13 test scenarios) ✅
+
+**Ready for**: `/tasks` command to generate implementation task list
 
 ---
-*Based on Constitution v2.1.1 - See `/memory/constitution.md`*
+*Based on Constitution v1.0.0 - See `.specify/memory/constitution.md`*
