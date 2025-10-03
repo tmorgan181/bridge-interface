@@ -10,9 +10,6 @@ markdown: kramdown
 permalink: /posts/:title/
 timezone: America/Chicago
 
-# Collections
-collections_dir: .
-
 # Plugins
 plugins:
   - jekyll-feed
