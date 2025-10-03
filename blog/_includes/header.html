@@ -13,11 +13,19 @@ Usage: {% include header.html %}
       
       <nav class="site-nav" aria-label="Main navigation">
         {% for item in site.data.navigation.main %}
-          <a href="{{ item.url | relative_url }}" 
-             {% if page.url == item.url %}class="active"{% endif %}>
+          <a href="{{ item.url | relative_url }}"
+             class="nav-link{% if page.url == item.url %} active{% endif %}{% if item.title == 'Atrium' %} atrium-link{% endif %}">
             {{ item.title }}
           </a>
         {% endfor %}
+
+        {%- comment -%}
+        Theme toggle button - sun/moon icons, ThemeManager handles click
+        {%- endcomment -%}
+        <button class="theme-toggle" aria-label="Toggle theme" type="button">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
       </nav>
     </div>
   </div>
