@@ -3,10 +3,10 @@
 ---
 
 // Main Stylesheet - Bridge Interface
-// Import order matters: tokens → reset → base styles → components
+// Using @use instead of @import (Dart Sass 3.0 compatibility)
 
-@import "tokens";
-@import "reset";
-@import "typography";
-@import "layout";
-@import "components";
+@use "tokens";
+@use "reset";
+@use "typography";
+@use "layout";
+@use "components";
