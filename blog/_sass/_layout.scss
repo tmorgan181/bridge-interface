@@ -1,4 +1,11 @@
+// ==================================================================
 // Layout Utilities - Bridge Interface
+// Phase 2: Theme-Aware Layout
+// ==================================================================
+//
+// Layout utilities and components using design tokens
+// Contract: specs/002-ui-overhaul/contracts/component-styles.md
+// ==================================================================
 
 // Container
 .container {
@@ -117,19 +124,27 @@
   }
 }
 
-// Skip link (accessibility)
+// ------------------------------------------------------------------
+// Skip Link (Accessibility)
+// Purple background for brand consistency, visible on focus
+// ------------------------------------------------------------------
+
 .skip-link {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--color-primary);
+  background: var(--atrium-purple);
   color: white;
   padding: var(--space-sm) var(--space-md);
   text-decoration: none;
-  z-index: var(--z-tooltip);
-  
+  z-index: 500;
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-medium);
+
   &:focus {
-    top: 0;
+    top: var(--space-sm);
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
   }
 }
 
