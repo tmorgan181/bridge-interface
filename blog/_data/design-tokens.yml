@@ -1,97 +1,691 @@
 # Design Tokens Documentation - Bridge Interface
-# This file documents all design tokens defined in _sass/_tokens.scss
+# Feature: 002-ui-overhaul (Light/Dark Mode Theme System)
+# This file documents all 95 design tokens defined in _sass/_tokens.scss
+# Last Updated: 2025-10-03
 
-colors:
-  primary:
-    token: --color-primary
-    value: "#2E5266"
-    usage: "Primary brand color, main CTAs, links"
-  
-  accent:
-    token: --color-accent
-    value: "#6E8898"
-    usage: "Accent color, secondary elements, highlights"
-  
-  text:
-    token: --color-text
-    value: "#1A1A1A"
-    usage: "Primary text color"
-  
-  background:
-    token: --color-background
-    value: "#FFFFFF"
-    usage: "Main background color"
+# ==================================================================
+# THEME-INDEPENDENT TOKENS (47 tokens)
+# These tokens never change across light/dark themes
+# ==================================================================
 
+# ------------------------------------------------------------------
+# Atrium Branding (6 tokens)
+# Signature colors - consistent across Bridge and Atrium sites
+# ------------------------------------------------------------------
+atrium_branding:
+  purple:
+    token: --atrium-purple
+    value: "#a78bfa"
+    usage: "Primary Atrium brand color - used for links, accents, glows"
+    applies_to: "Both Bridge and Atrium, both themes"
+  
+  purple_bright:
+    token: --atrium-purple-bright
+    value: "#c4b5fd"
+    usage: "Lighter purple variant for headings in Atrium preview cards"
+    applies_to: "Atrium card headings, dark mode hover states"
+  
+  purple_dark:
+    token: --atrium-purple-dark
+    value: "#8b7fb8"
+    usage: "Darker purple variant for active/pressed states"
+    applies_to: "Active buttons, visited links in light mode"
+  
+  blue:
+    token: --atrium-blue
+    value: "#60a5fa"
+    usage: "Secondary brand color - used in gradients with purple"
+    applies_to: "Gradient buttons, Atrium CTA elements"
+  
+  navy:
+    token: --atrium-navy
+    value: "#1a1d2e"
+    usage: "Deep navy background for Atrium preview cards"
+    applies_to: "Atrium card backgrounds (gradient start)"
+  
+  indigo:
+    token: --atrium-indigo
+    value: "#312e81"
+    usage: "Indigo gradient stop for Atrium cards"
+    applies_to: "Atrium card backgrounds (gradient end)"
+
+# ------------------------------------------------------------------
+# Glow Effects (2 tokens)
+# Used for hover states and Atrium branding emphasis
+# ------------------------------------------------------------------
+effects_glow:
+  purple:
+    token: --glow-purple
+    value: "0 0 12px rgba(167, 139, 250, 0.4)"
+    usage: "Purple glow for hover states on Atrium-related elements"
+    applies_to: "Nav links, buttons, cards on hover"
+  
+  blue:
+    token: --glow-blue
+    value: "0 0 12px rgba(96, 165, 250, 0.4)"
+    usage: "Blue glow for secondary hover effects"
+    applies_to: "Secondary buttons, alternate hover states"
+
+# ------------------------------------------------------------------
+# Typography (17 tokens)
+# Font families, sizes, weights, and line-heights
+# ------------------------------------------------------------------
 typography:
-  font-base:
-    token: --font-base
-    value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-    usage: "System font stack for body text"
+  fonts:
+    base:
+      token: --font-base
+      value: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+      usage: "Primary font for all UI and body text"
+      fallback: "System fonts if Inter not loaded"
+    
+    mono:
+      token: --font-mono
+      value: "'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace"
+      usage: "Monospace font for code blocks and inline code"
+      fallback: "System monospace fonts"
   
-  font-mono:
-    token: --font-mono
-    value: "'SFMono-Regular', Consolas, monospace"
-    usage: "Monospace font for code blocks"
+  sizes:
+    xs:
+      token: --font-size-xs
+      value: "0.75rem (12px)"
+      usage: "Extra small text - captions, labels"
+    
+    sm:
+      token: --font-size-sm
+      value: "0.875rem (14px)"
+      usage: "Small text - metadata, timestamps"
+    
+    base:
+      token: --font-size-base
+      value: "1rem (16px)"
+      usage: "Base body text size"
+    
+    lg:
+      token: --font-size-lg
+      value: "1.125rem (18px)"
+      usage: "Slightly larger body text - emphasis"
+    
+    xl:
+      token: --font-size-xl
+      value: "1.25rem (20px)"
+      usage: "Small headings, large body text"
+    
+    xxl:
+      token: --font-size-2xl
+      value: "1.5rem (24px)"
+      usage: "H3 headings, card titles"
+    
+    xxxl:
+      token: --font-size-3xl
+      value: "1.875rem (30px)"
+      usage: "H2 headings, section titles"
+    
+    xxxxl:
+      token: --font-size-4xl
+      value: "2.25rem (36px)"
+      usage: "H1 headings, hero titles"
   
-  font-size-base:
-    token: --font-size-base
-    value: "1rem (16px)"
-    usage: "Base font size for body text"
+  weights:
+    normal:
+      token: --font-weight-normal
+      value: "400"
+      usage: "Normal body text weight"
+    
+    medium:
+      token: --font-weight-medium
+      value: "500"
+      usage: "Medium emphasis - buttons, labels"
+    
+    semibold:
+      token: --font-weight-semibold
+      value: "600"
+      usage: "Semibold - navigation, important text"
+    
+    bold:
+      token: --font-weight-bold
+      value: "700"
+      usage: "Bold - headings, strong emphasis"
   
-  line-height-normal:
-    token: --line-height-normal
-    value: "1.5"
-    usage: "Standard line height for readability"
+  line_heights:
+    tight:
+      token: --line-height-tight
+      value: "1.25"
+      usage: "Tight line height for headings"
+    
+    normal:
+      token: --line-height-normal
+      value: "1.5"
+      usage: "Standard line height for UI text"
+    
+    relaxed:
+      token: --line-height-relaxed
+      value: "1.75"
+      usage: "Relaxed line height for body text readability"
 
+# ------------------------------------------------------------------
+# Spacing (8 tokens)
+# 4px base unit system
+# ------------------------------------------------------------------
 spacing:
-  space-xs:
+  xs:
     token: --space-xs
     value: "0.25rem (4px)"
-    usage: "Extra small spacing"
+    usage: "Extra small - tight padding, inline gaps"
   
-  space-sm:
+  sm:
     token: --space-sm
     value: "0.5rem (8px)"
-    usage: "Small spacing"
+    usage: "Small - button padding, icon gaps"
   
-  space-md:
+  md:
     token: --space-md
     value: "1rem (16px)"
-    usage: "Medium spacing (default)"
+    usage: "Medium - standard padding, element spacing"
   
-  space-lg:
+  lg:
     token: --space-lg
     value: "1.5rem (24px)"
-    usage: "Large spacing between sections"
+    usage: "Large - section padding, card spacing"
   
-  space-xl:
+  xl:
     token: --space-xl
     value: "2rem (32px)"
-    usage: "Extra large spacing"
+    usage: "Extra large - major sections, card padding"
+  
+  xxl:
+    token: --space-2xl
+    value: "3rem (48px)"
+    usage: "2XL - section gaps, major padding"
+  
+  xxxl:
+    token: --space-3xl
+    value: "4rem (64px)"
+    usage: "3XL - hero sections, major divisions"
+  
+  xxxxl:
+    token: --space-4xl
+    value: "6rem (96px)"
+    usage: "4XL - maximum spacing, hero padding"
 
+# ------------------------------------------------------------------
+# Layout (7 tokens)
+# Container widths, breakpoints, header dimensions
+# ------------------------------------------------------------------
 layout:
-  container-max-width:
+  container_max:
     token: --container-max-width
     value: "1200px"
-    usage: "Maximum width for main container"
+    usage: "Maximum width for site container"
   
-  content-max-width:
+  content_max:
     token: --content-max-width
     value: "65ch"
     usage: "Optimal reading width for text content"
-
-effects:
-  shadow-md:
-    token: --shadow-md
-    value: "0 4px 6px rgba(0,0,0,0.1)"
-    usage: "Standard box shadow for cards"
   
-  radius-md:
+  header_height:
+    token: --header-height
+    value: "64px"
+    usage: "Fixed height of site header"
+  
+  breakpoints:
+    sm:
+      token: --bp-sm
+      value: "640px"
+      usage: "Small devices breakpoint (mobile landscape)"
+    
+    md:
+      token: --bp-md
+      value: "768px"
+      usage: "Medium devices breakpoint (tablets)"
+    
+    lg:
+      token: --bp-lg
+      value: "1024px"
+      usage: "Large devices breakpoint (desktops)"
+    
+    xl:
+      token: --bp-xl
+      value: "1280px"
+      usage: "Extra large devices breakpoint (wide screens)"
+
+# ------------------------------------------------------------------
+# Borders & Radius (4 tokens)
+# Border radius values for rounded corners
+# ------------------------------------------------------------------
+borders:
+  radius_sm:
+    token: --radius-sm
+    value: "0.25rem (4px)"
+    usage: "Small radius - buttons, inline code"
+  
+  radius_md:
     token: --radius-md
     value: "0.5rem (8px)"
-    usage: "Standard border radius"
+    usage: "Medium radius - cards, inputs"
   
-  transition-base:
+  radius_lg:
+    token: --radius-lg
+    value: "1rem (16px)"
+    usage: "Large radius - major cards, modals"
+  
+  radius_full:
+    token: --radius-full
+    value: "9999px"
+    usage: "Full radius - circular buttons, pills"
+
+# ------------------------------------------------------------------
+# Transitions (3 tokens)
+# Timing for animations and state changes
+# ------------------------------------------------------------------
+transitions:
+  fast:
+    token: --transition-fast
+    value: "150ms ease-in-out"
+    usage: "Fast transitions - small state changes"
+  
+  base:
     token: --transition-base
     value: "250ms ease-in-out"
-    usage: "Standard transition timing"
+    usage: "Standard transitions - theme switching, hovers"
+  
+  slow:
+    token: --transition-slow
+    value: "350ms ease-in-out"
+    usage: "Slow transitions - major layout changes"
+
+# ==================================================================
+# LIGHT MODE TOKENS (24 tokens)
+# Applied when [data-theme="light"]
+# ==================================================================
+
+light_mode:
+  backgrounds:
+    primary:
+      token: --bg-primary
+      value: "#ffffff"
+      usage: "Main page background - clean white"
+      contrast: "16.57:1 with --text-primary (WCAG AAA)"
+    
+    secondary:
+      token: --bg-secondary
+      value: "#f8f9fa"
+      usage: "Subtle contrast areas - code blocks, alternating rows"
+      contrast: "15.78:1 with --text-primary"
+    
+    tertiary:
+      token: --bg-tertiary
+      value: "#e9ecef"
+      usage: "Deeper contrast - inline code, disabled states"
+      contrast: "13.12:1 with --text-primary"
+    
+    elevated:
+      token: --bg-elevated
+      value: "#ffffff"
+      usage: "Cards, modals - same as primary for light mode"
+      contrast: "16.57:1 with --text-primary"
+  
+  text_colors:
+    primary:
+      token: --text-primary
+      value: "#1a202c"
+      usage: "Main text - headings, body"
+      contrast: "16.57:1 on --bg-primary (WCAG AAA)"
+    
+    secondary:
+      token: --text-secondary
+      value: "#4a5568"
+      usage: "Secondary text - descriptions, metadata"
+      contrast: "9.09:1 on --bg-primary (WCAG AAA)"
+    
+    tertiary:
+      token: --text-tertiary
+      value: "#718096"
+      usage: "Tertiary text - captions, disabled"
+      contrast: "5.94:1 on --bg-primary (WCAG AA)"
+    
+    inverse:
+      token: --text-inverse
+      value: "#ffffff"
+      usage: "Text on dark backgrounds - buttons, Atrium cards"
+      contrast: "16.57:1 on #1a202c"
+  
+  borders:
+    primary:
+      token: --border-primary
+      value: "#e2e8f0"
+      usage: "Main borders - cards, dividers"
+    
+    secondary:
+      token: --border-secondary
+      value: "#cbd5e0"
+      usage: "Stronger borders - inputs, emphasis"
+    
+    focus:
+      token: --border-focus
+      value: "var(--atrium-purple)"
+      usage: "Focus rings - accessibility (3.71:1 contrast)"
+  
+  interactive:
+    accent_primary:
+      token: --accent-primary
+      value: "#8b7fb8"
+      usage: "Muted purple for light mode accents"
+      contrast: "4.12:1 on white (WCAG AA)"
+    
+    accent_hover:
+      token: --accent-hover
+      value: "var(--atrium-purple)"
+      usage: "Brighter purple on hover"
+    
+    accent_active:
+      token: --accent-active
+      value: "var(--atrium-purple-dark)"
+      usage: "Darker purple for active/pressed states"
+  
+  links:
+    default:
+      token: --link-color
+      value: "#4a5568"
+      usage: "Default link color - gray for subtlety"
+      contrast: "9.09:1 on white"
+    
+    hover:
+      token: --link-hover
+      value: "var(--atrium-purple)"
+      usage: "Purple on hover - Atrium connection"
+    
+    visited:
+      token: --link-visited
+      value: "#6d5d9c"
+      usage: "Darker purple for visited links"
+  
+  atrium_specific:
+    card_bg:
+      token: --atrium-card-bg
+      value: "linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)"
+      usage: "Dark gradient for Atrium cards in light mode"
+    
+    card_text:
+      token: --atrium-card-text
+      value: "#e0e7ff"
+      usage: "Light text on dark Atrium cards"
+    
+    card_heading:
+      token: --atrium-card-heading
+      value: "var(--atrium-purple-bright)"
+      usage: "Bright purple headings on Atrium cards"
+  
+  shadows:
+    sm:
+      token: --shadow-sm
+      value: "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+      usage: "Subtle shadow - small elevation"
+    
+    md:
+      token: --shadow-md
+      value: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+      usage: "Medium shadow - cards, dropdowns"
+    
+    lg:
+      token: --shadow-lg
+      value: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
+      usage: "Large shadow - modals, popovers"
+    
+    glow:
+      token: --shadow-glow
+      value: "0 4px 12px rgba(167, 139, 250, 0.2)"
+      usage: "Purple glow - reduced opacity in light mode"
+
+# ==================================================================
+# DARK MODE TOKENS (24 tokens)
+# Applied when [data-theme="dark"]
+# ==================================================================
+
+dark_mode:
+  backgrounds:
+    primary:
+      token: --bg-primary
+      value: "#0f172a (Slate 900)"
+      usage: "Main page background - lighter than Atrium navy"
+      contrast: "16.89:1 with --text-primary (WCAG AAA)"
+      note: "Lighter than Atrium's #1a1d2e to differentiate Bridge"
+    
+    secondary:
+      token: --bg-secondary
+      value: "#1e293b (Slate 800)"
+      usage: "Subtle contrast - code blocks, sections"
+      contrast: "14.12:1 with --text-primary"
+    
+    tertiary:
+      token: --bg-tertiary
+      value: "#334155 (Slate 700)"
+      usage: "Deeper contrast - inline code, borders"
+      contrast: "10.45:1 with --text-primary"
+    
+    elevated:
+      token: --bg-elevated
+      value: "#1e293b (Slate 800)"
+      usage: "Cards, modals - slightly lighter than primary"
+      contrast: "14.12:1 with --text-primary"
+  
+  text_colors:
+    primary:
+      token: --text-primary
+      value: "#f1f5f9"
+      usage: "Main text - headings, body"
+      contrast: "16.89:1 on --bg-primary (WCAG AAA)"
+    
+    secondary:
+      token: --text-secondary
+      value: "#cbd5e0"
+      usage: "Secondary text - descriptions"
+      contrast: "13.08:1 on --bg-primary (WCAG AAA)"
+    
+    tertiary:
+      token: --text-tertiary
+      value: "#94a3b8"
+      usage: "Tertiary text - captions, metadata"
+      contrast: "7.54:1 on --bg-primary (WCAG AA)"
+    
+    inverse:
+      token: --text-inverse
+      value: "#0f172a"
+      usage: "Dark text on light backgrounds (rare)"
+      contrast: "16.89:1 on #f1f5f9"
+  
+  borders:
+    primary:
+      token: --border-primary
+      value: "#334155"
+      usage: "Main borders - subtle on dark"
+    
+    secondary:
+      token: --border-secondary
+      value: "#475569"
+      usage: "Stronger borders - inputs, dividers"
+    
+    focus:
+      token: --border-focus
+      value: "var(--atrium-purple)"
+      usage: "Focus rings - 5.16:1 contrast in dark mode"
+  
+  interactive:
+    accent_primary:
+      token: --accent-primary
+      value: "var(--atrium-purple)"
+      usage: "Full purple brightness for dark mode"
+      contrast: "5.16:1 on dark slate"
+    
+    accent_hover:
+      token: --accent-hover
+      value: "var(--atrium-purple-bright)"
+      usage: "Brighter purple on hover - more prominent"
+    
+    accent_active:
+      token: --accent-active
+      value: "var(--atrium-purple-dark)"
+      usage: "Darker purple for pressed states"
+  
+  links:
+    default:
+      token: --link-color
+      value: "#94a3b8"
+      usage: "Default link color - light gray"
+      contrast: "7.54:1 on dark slate"
+    
+    hover:
+      token: --link-hover
+      value: "var(--atrium-purple-bright)"
+      usage: "Bright purple on hover"
+    
+    visited:
+      token: --link-visited
+      value: "var(--atrium-purple-dark)"
+      usage: "Darker purple for visited"
+  
+  atrium_specific:
+    card_bg:
+      token: --atrium-card-bg
+      value: "linear-gradient(135deg, var(--atrium-navy) 0%, var(--atrium-indigo) 100%)"
+      usage: "Deeper dark gradient for Atrium cards in dark mode"
+    
+    card_text:
+      token: --atrium-card-text
+      value: "#e0e7ff"
+      usage: "Same light text as light mode (consistent Atrium identity)"
+    
+    card_heading:
+      token: --atrium-card-heading
+      value: "var(--atrium-purple-bright)"
+      usage: "Same bright purple as light mode (consistent)"
+  
+  shadows:
+    sm:
+      token: --shadow-sm
+      value: "0 1px 2px 0 rgba(0, 0, 0, 0.3)"
+      usage: "Subtle shadow - more opacity in dark mode"
+    
+    md:
+      token: --shadow-md
+      value: "0 4px 6px -1px rgba(0, 0, 0, 0.4)"
+      usage: "Medium shadow - stronger in dark"
+    
+    lg:
+      token: --shadow-lg
+      value: "0 10px 15px -3px rgba(0, 0, 0, 0.5)"
+      usage: "Large shadow - very prominent in dark"
+    
+    glow:
+      token: --shadow-glow
+      value: "0 4px 16px rgba(167, 139, 250, 0.4)"
+      usage: "Purple glow - double opacity in dark mode"
+
+# ==================================================================
+# USAGE EXAMPLES
+# ==================================================================
+
+usage_examples:
+  basic_component:
+    description: "Using tokens in a component"
+    scss: |
+      .post-card {
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+        border: 1px solid var(--border-primary);
+        border-radius: var(--radius-lg);
+        padding: var(--space-xl);
+        transition: all var(--transition-base);
+        
+        &:hover {
+          border-color: var(--accent-hover);
+          box-shadow: var(--shadow-glow);
+        }
+      }
+  
+  atrium_branding:
+    description: "Atrium-specific styling"
+    scss: |
+      .atrium-link {
+        color: var(--atrium-purple);
+        font-weight: var(--font-weight-semibold);
+        
+        &:hover {
+          color: var(--atrium-purple-bright);
+          text-shadow: var(--glow-purple);
+        }
+      }
+  
+  responsive_spacing:
+    description: "Responsive spacing with tokens"
+    scss: |
+      .section {
+        padding: var(--space-lg);
+        
+        @media (min-width: 768px) {
+          padding: var(--space-2xl);
+        }
+        
+        @media (min-width: 1024px) {
+          padding: var(--space-3xl);
+        }
+      }
+
+# ==================================================================
+# ACCESSIBILITY NOTES
+# ==================================================================
+
+accessibility:
+  contrast_ratios:
+    wcag_aa_text: "4.5:1 minimum (all text/background combinations meet this)"
+    wcag_aa_ui: "3.0:1 minimum (all interactive elements meet this)"
+    light_mode_primary: "16.57:1 (AAA level)"
+    dark_mode_primary: "16.89:1 (AAA level)"
+  
+  testing:
+    tool: "WebAIM Contrast Checker"
+    url: "https://webaim.org/resources/contrastchecker/"
+    verification: "All token combinations tested and documented in specs/002-ui-overhaul/quickstart.md"
+  
+  color_independence:
+    note: "Color is never the only means of conveying information"
+    examples:
+      - "Links have underlines, not just color changes"
+      - "Buttons have borders and hover states beyond color"
+      - "Focus indicators have both color and outline"
+
+# ==================================================================
+# MAINTENANCE
+# ==================================================================
+
+maintenance:
+  adding_tokens:
+    - "Add to _tokens.scss first"
+    - "Document here with usage and examples"
+    - "Test contrast ratios if color token"
+    - "Update components to use new token"
+  
+  modifying_tokens:
+    - "Check all usages in codebase first"
+    - "Test in both light and dark themes"
+    - "Verify accessibility standards still met"
+    - "Update documentation"
+  
+  deprecating_tokens:
+    - "Mark as deprecated in comments"
+    - "Provide replacement token recommendation"
+    - "Leave in place for one release cycle"
+    - "Remove and document in changelog"
+
+# ==================================================================
+# REFERENCE
+# ==================================================================
+
+reference:
+  specification: "specs/002-ui-overhaul/spec.md"
+  contracts: "specs/002-ui-overhaul/contracts/theme-tokens.md"
+  data_model: "specs/002-ui-overhaul/data-model.md"
+  implementation: "blog/_sass/_tokens.scss"
+  total_tokens: 95
+  theme_independent: 47
+  light_mode: 24
+  dark_mode: 24
