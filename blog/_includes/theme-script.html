@@ -1,0 +1,28 @@
+<!--
+  Critical Inline Theme Script
+
+  This script MUST run synchronously in <head> BEFORE any CSS loads
+  to prevent flash of wrong theme (FOUT/FOUC).
+
+  Contract: specs/002-ui-overhaul/contracts/theme-manager.md
+  Reference: specs/002-ui-overhaul/research.md Decision 3
+-->
+<script>
+(function() {
+  // Get saved theme from localStorage (with error handling)
+  var theme;
+  try {
+    theme = localStorage.getItem('theme');
+  } catch (e) {
+    theme = null;
+  }
+
+  // If no saved theme, check system preference
+  if (!theme || (theme !== 'light' && theme !== 'dark')) {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  // Set theme attribute before CSS loads (prevents flash)
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
