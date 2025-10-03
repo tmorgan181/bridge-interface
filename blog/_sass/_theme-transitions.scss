@@ -1,0 +1,54 @@
+// ==================================================================
+// Theme Transitions - Bridge Interface
+// Phase 2: Smooth Light/Dark Mode Switching
+// ==================================================================
+//
+// This file provides smooth color transitions when switching themes.
+// - 250ms ease-in-out on color properties only (no layout shifts)
+// - Respects prefers-reduced-motion for accessibility
+// - Applied via temporary .theme-transitioning class (removed after 300ms)
+//
+// Reference: specs/002-ui-overhaul/research.md Decision 6
+// ==================================================================
+
+// ------------------------------------------------------------------
+// Theme Transitioning Class
+// Applied temporarily during theme switch (250ms duration + 50ms buffer)
+// ------------------------------------------------------------------
+
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  // Only transition color-related properties to avoid layout shifts
+  // Using !important to override any existing transitions during theme change
+  transition: background-color 250ms ease-in-out !important,
+              color 250ms ease-in-out !important,
+              border-color 250ms ease-in-out !important,
+              box-shadow 250ms ease-in-out !important,
+              text-shadow 250ms ease-in-out !important;
+}
+
+// ------------------------------------------------------------------
+// Accessibility: Reduced Motion Support
+// Instant theme switch for users with motion sensitivity
+// ------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-transitioning,
+  .theme-transitioning *,
+  .theme-transitioning *::before,
+  .theme-transitioning *::after {
+    // No transitions - instant theme change
+    transition: none !important;
+  }
+}
+
+// ------------------------------------------------------------------
+// Performance Notes
+// ------------------------------------------------------------------
+// - Color transitions are GPU-accelerated in modern browsers
+// - No transform/position changes = no layout reflow
+// - Class is removed after 300ms (250ms transition + 50ms buffer)
+// - Transition only applies during active theme switch, not on hover/focus
+// ==================================================================

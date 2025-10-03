@@ -6,6 +6,7 @@
 // Using @use instead of @import (Dart Sass 3.0 compatibility)
 
 @use "tokens";
+@use "theme-transitions";
 @use "reset";
 @use "typography";
 @use "layout";
