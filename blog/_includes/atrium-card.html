@@ -1,0 +1,32 @@
+{% comment %}
+Component: Atrium Preview Card
+Purpose: Showcase The Atrium with dark gradient and shimmer effect
+Usage: {% include atrium-card.html %}
+
+Props (optional):
+  - title: Card heading (default: "Enter The Atrium")
+  - description: Card body text
+  - cta_text: Button text (default: "Explore The Atrium")
+  - cta_url: Button link (default: "/atrium/")
+
+Contract: specs/002-ui-overhaul/contracts/component-styles.md
+Reference: specs/002-ui-overhaul/data-model.md section 3.3
+{% endcomment %}
+
+<div class="atrium-preview">
+  <div class="atrium-card">
+    <h2>{{ include.title | default: "Enter The Atrium" }}</h2>
+    <p>
+      {% if include.description %}
+        {{ include.description }}
+      {% else %}
+        A research facility for exploring AI capabilities, testing methodologies,
+        and documenting patterns. While The Bridge welcomes all, The Atrium is
+        where deeper experiments unfold.
+      {% endif %}
+    </p>
+    <a href="{{ include.cta_url | default: '/atrium/' | relative_url }}" class="cta-button">
+      {{ include.cta_text | default: "Explore The Atrium" }} →
+    </a>
+  </div>
+</div>
