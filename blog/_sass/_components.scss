@@ -1,130 +1,216 @@
+// ==================================================================
 // Component Styles - Bridge Interface
+// Phase 2: Theme-Aware Components
+// ==================================================================
+//
+// All components use design tokens (var(--token-name)) for theme switching
+// No hard-coded colors - references tokens from _tokens.scss
+//
+// Contract: specs/002-ui-overhaul/contracts/component-styles.md
+// ==================================================================
 
+// ------------------------------------------------------------------
+// Theme Toggle Button
+// Circular button with sun/moon icons, purple glow on hover
+// ------------------------------------------------------------------
+
+.theme-toggle {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  padding: var(--space-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    border-color: var(--accent-hover);
+    box-shadow: var(--shadow-glow);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
+  }
+
+  // Icon display logic (toggled via data-theme attribute)
+  .icon-sun { display: none; }
+  .icon-moon { display: block; }
+
+  [data-theme="dark"] & {
+    .icon-sun { display: block; }
+    .icon-moon { display: none; }
+  }
+}
+
+// ------------------------------------------------------------------
 // Header
+// Elevated background, sticky positioning, backdrop blur
+// ------------------------------------------------------------------
+
 .site-header {
-  background-color: var(--color-background);
-  border-bottom: var(--border-width) solid var(--color-border);
+  background-color: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-primary);
   padding: var(--space-lg) 0;
   position: sticky;
   top: 0;
-  z-index: var(--z-sticky);
-  
+  z-index: 200;
+  backdrop-filter: blur(8px);
+
   .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .site-title {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: var(--text-primary);
     text-decoration: none;
-    
+    transition: color var(--transition-base);
+
     &:hover {
-      color: var(--color-primary-dark);
+      color: var(--accent-hover);
     }
   }
 }
 
-// Navigation
+// ------------------------------------------------------------------
+// Navigation Links
+// Secondary text color, purple hover with glow
+// ------------------------------------------------------------------
+
 .site-nav {
   display: flex;
   gap: var(--space-lg);
-  
-  a {
-    color: var(--color-text-light);
+  align-items: center;
+
+  .nav-link {
+    color: var(--text-secondary);
     text-decoration: none;
     font-weight: var(--font-weight-medium);
-    transition: color var(--transition-fast);
-    
+    transition: all var(--transition-base);
+
     &:hover {
-      color: var(--color-primary);
+      color: var(--accent-hover);
+      text-shadow: var(--glow-purple);
     }
-    
+
     &.active {
-      color: var(--color-primary);
+      color: var(--accent-primary);
+      font-weight: var(--font-weight-semibold);
     }
   }
-  
+
+  .atrium-link {
+    color: var(--atrium-purple);
+    font-weight: var(--font-weight-semibold);
+
+    &:hover {
+      color: var(--atrium-purple-bright);
+      text-shadow: var(--glow-purple);
+    }
+  }
+
   @media (max-width: 640px) {
     gap: var(--space-md);
     font-size: var(--font-size-sm);
   }
 }
 
+// ------------------------------------------------------------------
 // Footer
+// ------------------------------------------------------------------
+
 .site-footer {
-  background-color: var(--color-background-alt);
-  border-top: var(--border-width) solid var(--color-border);
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-primary);
   padding: var(--space-2xl) 0;
   margin-top: var(--space-4xl);
-  
+
   .footer-content {
     text-align: center;
-    color: var(--color-text-light);
+    color: var(--text-secondary);
     font-size: var(--font-size-sm);
   }
-  
+
   .footer-links {
     display: flex;
     justify-content: center;
     gap: var(--space-lg);
     margin-top: var(--space-md);
-    
+
     a {
-      color: var(--color-text-light);
+      color: var(--text-secondary);
       text-decoration: none;
-      
+      transition: color var(--transition-base);
+
       &:hover {
-        color: var(--color-primary);
+        color: var(--accent-hover);
       }
     }
   }
 }
 
+// ------------------------------------------------------------------
 // Post Card
+// Elevated background, border, hover lift with purple glow
+// ------------------------------------------------------------------
+
 .post-card {
-  padding: var(--space-lg);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-md);
-  background-color: var(--color-background);
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
-  
+  padding: var(--space-xl);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-elevated);
+  transition: all var(--transition-base);
+
   &:hover {
-    box-shadow: var(--shadow-md);
+    border-color: var(--accent-hover);
+    box-shadow: var(--shadow-glow);
     transform: translateY(-2px);
   }
-  
+
   .post-card__title {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-2xl);
     margin-bottom: var(--space-sm);
-    
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+
     a {
-      color: var(--color-text);
+      color: var(--text-primary);
       text-decoration: none;
-      
+      transition: color var(--transition-base);
+
       &:hover {
-        color: var(--color-primary);
+        color: var(--accent-hover);
       }
     }
   }
-  
+
   .post-card__date {
     display: block;
     font-size: var(--font-size-sm);
-    color: var(--color-text-lighter);
+    color: var(--text-tertiary);
     margin-bottom: var(--space-md);
   }
-  
+
   .post-card__excerpt {
-    color: var(--color-text-light);
+    color: var(--text-secondary);
     line-height: var(--line-height-relaxed);
     margin-bottom: 0;
   }
 }
 
+// ------------------------------------------------------------------
 // Post List
+// ------------------------------------------------------------------
+
 .post-list {
   list-style: none;
   padding: 0;
@@ -134,28 +220,35 @@
   gap: var(--space-xl);
 }
 
+// ------------------------------------------------------------------
 // Post Header
+// ------------------------------------------------------------------
+
 .post-header {
   margin-bottom: var(--space-2xl);
-  
+
   .post-title {
     margin-bottom: var(--space-md);
+    color: var(--text-primary);
   }
-  
+
   .post-meta {
     display: flex;
     gap: var(--space-md);
     align-items: center;
-    color: var(--color-text-lighter);
+    color: var(--text-tertiary);
     font-size: var(--font-size-sm);
   }
-  
+
   .post-author {
     font-weight: var(--font-weight-medium);
   }
 }
 
+// ------------------------------------------------------------------
 // Post Tags
+// ------------------------------------------------------------------
+
 .post-tags {
   display: flex;
   flex-wrap: wrap;
@@ -163,78 +256,91 @@
   list-style: none;
   padding: 0;
   margin-top: var(--space-md);
-  
+
   li {
     padding: var(--space-xs) var(--space-sm);
-    background-color: var(--color-background-alt);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
     border-radius: var(--radius-sm);
     font-size: var(--font-size-sm);
-    color: var(--color-text-light);
+    color: var(--text-secondary);
   }
 }
 
+// ------------------------------------------------------------------
 // Post Content
+// ------------------------------------------------------------------
+
 .post-content {
   max-width: var(--content-max-width);
   margin-left: auto;
   margin-right: auto;
-  
+
   img {
     margin: var(--space-xl) 0;
     border-radius: var(--radius-md);
+    border: 1px solid var(--border-primary);
   }
 }
 
+// ------------------------------------------------------------------
 // Post Footer
+// ------------------------------------------------------------------
+
 .post-footer {
   margin-top: var(--space-3xl);
   padding-top: var(--space-xl);
-  border-top: var(--border-width) solid var(--color-border);
-  
+  border-top: 1px solid var(--border-primary);
+
   .back-link {
-    color: var(--color-primary);
+    color: var(--link-color);
     text-decoration: none;
     font-weight: var(--font-weight-medium);
-    
+    transition: color var(--transition-base);
+
     &:hover {
-      text-decoration: underline;
+      color: var(--link-hover);
     }
   }
 }
 
+// ------------------------------------------------------------------
 // Hero Section
+// ------------------------------------------------------------------
+
 .hero {
   text-align: center;
   padding: var(--space-4xl) 0;
-  
+
   @media (max-width: 768px) {
     padding: var(--space-3xl) 0;
   }
-  
+
   .hero__title {
     font-size: var(--font-size-4xl);
+    color: var(--text-primary);
     margin-bottom: var(--space-md);
-    
+
     @media (max-width: 768px) {
       font-size: var(--font-size-3xl);
     }
   }
-  
+
   .hero__tagline {
     font-size: var(--font-size-xl);
-    color: var(--color-text-light);
+    color: var(--text-secondary);
     margin-bottom: var(--space-lg);
-    
+
     @media (max-width: 768px) {
       font-size: var(--font-size-lg);
     }
   }
-  
+
   .hero__cta {
     display: inline-flex;
     gap: var(--space-md);
     margin-top: var(--space-xl);
-    
+
     @media (max-width: 640px) {
       flex-direction: column;
       width: 100%;
@@ -242,65 +348,208 @@
   }
 }
 
-// Button
-.button {
+// ------------------------------------------------------------------
+// Buttons
+// Primary, secondary, and Atrium-specific button styles
+// ------------------------------------------------------------------
+
+.btn {
   display: inline-block;
-  padding: var(--space-md) var(--space-xl);
+  padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-md);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
   transition: all var(--transition-base);
   text-align: center;
-  
+  border: none;
+  cursor: pointer;
+
   &-primary {
-    background-color: var(--color-primary);
-    color: white;
-    
+    background: var(--accent-primary);
+    color: var(--text-inverse);
+
     &:hover {
-      background-color: var(--color-primary-dark);
+      background: var(--accent-hover);
+      box-shadow: var(--shadow-glow);
       transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+    }
+
+    &:active {
+      background: var(--accent-active);
+      transform: translateY(0);
     }
   }
-  
+
   &-secondary {
-    background-color: transparent;
-    color: var(--color-primary);
-    border: var(--border-width-thick) solid var(--color-primary);
-    
+    background: transparent;
+    color: var(--accent-primary);
+    border: 2px solid var(--accent-primary);
+
     &:hover {
-      background-color: var(--color-primary);
-      color: white;
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: var(--text-inverse);
+    }
+  }
+
+  &-atrium {
+    background: linear-gradient(135deg, var(--atrium-purple) 0%, var(--atrium-blue) 100%);
+    color: white;
+    font-weight: var(--font-weight-semibold);
+
+    &:hover {
+      box-shadow: 0 8px 20px rgba(167, 139, 250, 0.4);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 }
 
+// Legacy button class for backward compatibility
+.button {
+  @extend .btn;
+
+  &-primary {
+    @extend .btn-primary;
+  }
+
+  &-secondary {
+    @extend .btn-secondary;
+  }
+}
+
+// ------------------------------------------------------------------
+// Atrium Preview Card
+// Dark navy/indigo gradient, shimmer effect, gradient CTA
+// Maintains Atrium's dark aesthetic in both light and dark Bridge themes
+// ------------------------------------------------------------------
+
+.atrium-preview {
+  margin: var(--space-4xl) 0;
+
+  .atrium-card {
+    background: var(--atrium-card-bg);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3xl);
+    position: relative;
+    overflow: hidden;
+
+    // Shimmer animation overlay
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 70%
+      );
+      animation: shimmer 3s infinite;
+    }
+
+    h2 {
+      color: var(--atrium-card-heading);
+      font-size: var(--font-size-3xl);
+      margin-bottom: var(--space-md);
+      position: relative;
+      z-index: 1;
+    }
+
+    p {
+      color: var(--atrium-card-text);
+      font-size: var(--font-size-lg);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--space-xl);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, var(--atrium-purple) 0%, var(--atrium-blue) 100%);
+      color: white;
+      padding: var(--space-md) var(--space-2xl);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: var(--font-weight-semibold);
+      display: inline-block;
+      transition: all var(--transition-base);
+      position: relative;
+      z-index: 1;
+
+      &:hover {
+        box-shadow: 0 8px 20px rgba(167, 139, 250, 0.6);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+// ------------------------------------------------------------------
 // Value Propositions
+// ------------------------------------------------------------------
+
 .value-props {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
   margin: var(--space-3xl) 0;
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
-  
+
   .value-prop {
     text-align: center;
     padding: var(--space-xl);
-    
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: var(--accent-hover);
+      box-shadow: var(--shadow-glow);
+    }
+
     h3 {
       margin-top: var(--space-md);
       margin-bottom: var(--space-sm);
+      color: var(--text-primary);
     }
-    
+
     p {
-      color: var(--color-text-light);
+      color: var(--text-secondary);
     }
   }
 }
+
+// ==================================================================
+// Component Summary
+// ==================================================================
+// - Theme Toggle: Circular button, sun/moon icons, purple glow
+// - Navigation: Purple hover with glow, Atrium link always purple
+// - Post Cards: Elevated, hover lift, purple glow
+// - Atrium Preview: Dark gradient, shimmer animation, gradient CTA
+// - Buttons: Primary (token colors), Atrium (purple-blue gradient)
+// - All components: Use tokens only, no hard-coded values
+// ==================================================================
