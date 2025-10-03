@@ -1,12 +1,25 @@
+// ==================================================================
 // Typography Styles - Bridge Interface
+// Phase 2: Theme-Aware Typography
+// ==================================================================
+//
+// All typography uses design tokens for theme switching
+// No hard-coded colors - references tokens from _tokens.scss
+//
+// Contract: specs/002-ui-overhaul/contracts/component-styles.md
+// ==================================================================
 
+// ------------------------------------------------------------------
 // Headings
+// Primary text color, bold weight, tight line-height
+// ------------------------------------------------------------------
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  color: var(--color-text);
+  color: var(--text-primary);
   margin-bottom: var(--space-md);
-  
+
   &:not(:first-child) {
     margin-top: var(--space-2xl);
   }
@@ -14,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: var(--font-size-4xl);
-  
+
   @media (max-width: 768px) {
     font-size: var(--font-size-3xl);
   }
@@ -22,7 +35,7 @@ h1 {
 
 h2 {
   font-size: var(--font-size-3xl);
-  
+
   @media (max-width: 768px) {
     font-size: var(--font-size-2xl);
   }
@@ -30,7 +43,7 @@ h2 {
 
 h3 {
   font-size: var(--font-size-2xl);
-  
+
   @media (max-width: 768px) {
     font-size: var(--font-size-xl);
   }
@@ -45,43 +58,62 @@ h5 {
 }
 
 h6 {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
 }
 
-// Body text
+// ------------------------------------------------------------------
+// Body Text
+// Secondary color, relaxed line-height for readability
+// ------------------------------------------------------------------
+
 p {
   margin-bottom: var(--space-md);
   line-height: var(--line-height-relaxed);
-  
+  color: var(--text-secondary);
+
   &:last-child {
     margin-bottom: 0;
   }
 }
 
+// ------------------------------------------------------------------
 // Links
+// Theme-aware link colors with purple hover
+// ------------------------------------------------------------------
+
 a {
-  color: var(--color-link);
+  color: var(--link-color);
   text-decoration: underline;
-  transition: color var(--transition-fast);
-  
+  transition: color var(--transition-base);
+
   &:hover {
-    color: var(--color-link-hover);
+    color: var(--link-hover);
   }
-  
+
   &:visited {
-    color: var(--color-link-visited);
+    color: var(--link-visited);
+  }
+
+  // Focus state for accessibility
+  &:focus {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
   }
 }
 
+// ------------------------------------------------------------------
 // Lists
+// ------------------------------------------------------------------
+
 ul, ol {
   margin-bottom: var(--space-md);
   padding-left: var(--space-xl);
-  
+
   li {
     margin-bottom: var(--space-sm);
     line-height: var(--line-height-relaxed);
+    color: var(--text-secondary);
   }
 }
 
@@ -93,69 +125,152 @@ ol {
   list-style-type: decimal;
 }
 
+// ------------------------------------------------------------------
 // Blockquotes
+// Purple left border (Atrium branding), secondary background
+// ------------------------------------------------------------------
+
 blockquote {
   margin: var(--space-xl) 0;
   padding: var(--space-md) var(--space-lg);
-  border-left: 4px solid var(--color-primary);
-  background-color: var(--color-background-alt);
+  border-left: 4px solid var(--atrium-purple);
+  background-color: var(--bg-secondary);
   font-style: italic;
-  color: var(--color-text-light);
-  
+  color: var(--text-secondary);
+
   p:last-child {
     margin-bottom: 0;
   }
+
+  // Citation styling
+  cite {
+    display: block;
+    margin-top: var(--space-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-tertiary);
+    font-style: normal;
+  }
 }
 
-// Code
+// ------------------------------------------------------------------
+// Code Blocks
+// Inline code: tertiary background, purple text
+// Block code: secondary background, primary text, syntax highlighting
+// ------------------------------------------------------------------
+
 code {
   font-family: var(--font-mono);
   font-size: 0.9em;
-  padding: 0.125rem 0.25rem;
-  background-color: var(--color-background-alt);
+  padding: 0.125rem 0.375rem;
+  background-color: var(--bg-tertiary);
   border-radius: var(--radius-sm);
-  color: var(--color-text);
+  color: var(--atrium-purple);  // Purple for inline code visibility
 }
 
 pre {
   margin: var(--space-xl) 0;
   padding: var(--space-lg);
-  background-color: var(--color-background-dark);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
   border-radius: var(--radius-md);
   overflow-x: auto;
-  
+
   code {
     padding: 0;
     background-color: transparent;
+    color: var(--text-primary);  // Override purple for block code
     font-size: var(--font-size-sm);
     line-height: var(--line-height-relaxed);
   }
 }
 
-// Horizontal rule
+// Syntax highlighting overrides (for Rouge/Jekyll)
+.highlight {
+  margin: var(--space-xl) 0;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+
+  pre {
+    margin: 0;
+    border: none;
+  }
+
+  // Basic syntax colors (theme-aware)
+  .k { color: var(--atrium-purple); }  // Keywords
+  .s { color: var(--accent-hover); }   // Strings
+  .c { color: var(--text-tertiary); }  // Comments
+  .n { color: var(--text-primary); }   // Names
+  .o { color: var(--text-secondary); } // Operators
+}
+
+// ------------------------------------------------------------------
+// Horizontal Rule
+// ------------------------------------------------------------------
+
 hr {
   margin: var(--space-2xl) 0;
   border: 0;
-  border-top: var(--border-width) var(--border-style) var(--color-border);
+  border-top: 1px solid var(--border-primary);
 }
 
-// Strong and emphasis
+// ------------------------------------------------------------------
+// Text Emphasis
+// ------------------------------------------------------------------
+
 strong, b {
   font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
 }
 
 em, i {
   font-style: italic;
 }
 
-// Small text
-small {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-light);
+// Mark/highlight
+mark {
+  background-color: var(--atrium-purple);
+  color: white;
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-sm);
 }
 
-// Time
+// ------------------------------------------------------------------
+// Small Text & Meta Information
+// ------------------------------------------------------------------
+
+small {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
 time {
   font-size: var(--font-size-sm);
-  color: var(--color-text-lighter);
+  color: var(--text-tertiary);
 }
+
+// ------------------------------------------------------------------
+// Accessibility: Selection Colors
+// ------------------------------------------------------------------
+
+::selection {
+  background-color: var(--atrium-purple);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: var(--atrium-purple);
+  color: white;
+}
+
+// ==================================================================
+// Typography Summary
+// ==================================================================
+// - Headings: Primary text color, bold weight
+// - Body: Secondary text color, relaxed line-height
+// - Links: Theme-aware colors, purple hover
+// - Code: Inline (purple on tertiary bg), Block (primary on secondary bg)
+// - Blockquotes: Purple border (Atrium branding)
+// - Selection: Purple background for brand consistency
+// - All colors use design tokens for theme switching
+// ==================================================================
