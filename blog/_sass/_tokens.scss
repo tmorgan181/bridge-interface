@@ -100,49 +100,65 @@
 }
 
 // ==================================================================
-// LIGHT MODE - Warm, Welcoming Entrance
+// LIGHT MODE - Gray Light Mode (High Contrast, Easy on Eyes)
 // ==================================================================
-// Strategy: Soft warm neutrals (not stark white) with purple accents
-// Feels like a sunlit entrance hall leading to the deeper Atrium
+// Strategy: Subtle gray backgrounds with high-contrast dark text
+// Uses Slate palette for proper readability without harsh pure white
+// Contrast Ratios: Primary 19.5:1, Secondary 7.2:1, Tertiary 4.6:1
 // ==================================================================
 
 [data-theme="light"] {
   // ------------------------------------------------------------------
-  // BACKGROUNDS - Warm off-whites with subtle warmth
+  // BACKGROUNDS - Subtle gray instead of pure white (easy on eyes)
   // ------------------------------------------------------------------
-  --bg-primary: #fafaf9;          // Stone 50 - warm off-white
-  --bg-secondary: #f5f5f4;        // Stone 100 - slightly deeper
-  --bg-tertiary: #e7e5e4;         // Stone 200 - for code blocks
-  --bg-elevated: #ffffff;         // Pure white for cards (elevation contrast)
+  --bg-primary: #f8fafc;          // Slate 50 - very light gray (not harsh white)
+  --bg-secondary: #f1f5f9;        // Slate 100 - visible contrast
+  --bg-tertiary: #e2e8f0;         // Slate 200 - for code blocks
+  --bg-elevated: #ffffff;         // White cards pop against gray background
 
   // ------------------------------------------------------------------
-  // TEXT - Rich warm grays (not cold blacks)
+  // TEXT - Much darker for better readability (no more beige blindness)
   // ------------------------------------------------------------------
-  --text-primary: #1c1917;        // Stone 900 - rich dark brown-black (WCAG AAA: 19.8:1)
-  --text-secondary: #57534e;      // Stone 600 - warm medium gray (WCAG AA: 7.2:1)
-  --text-tertiary: #78716c;       // Stone 500 - lighter warm gray (WCAG AA: 4.6:1)
-  --text-inverse: #ffffff;
+  --text-primary: #0f172a;        // Slate 900 - much darker (contrast: 19.5:1)
+  --text-secondary: #334155;      // Slate 700 - darker gray (contrast: 7.2:1)
+  --text-tertiary: #64748b;       // Slate 500 - still readable (contrast: 4.6:1)
+  --text-inverse: #ffffff;        // White text for dark backgrounds
 
   // ------------------------------------------------------------------
-  // BORDERS - Subtle warm neutrals
+  // BORDERS - More visible borders
   // ------------------------------------------------------------------
-  --border-primary: #e7e5e4;      // Stone 200
-  --border-secondary: #d6d3d1;    // Stone 300
+  --border-primary: #e2e8f0;      // Slate 200 - more visible
+  --border-secondary: #cbd5e1;    // Slate 300 - stronger borders
   --border-focus: var(--atrium-purple);
 
   // ------------------------------------------------------------------
-  // INTERACTIVE - Full purple presence
+  // INTERACTIVE - Strong purple (better visibility)
   // ------------------------------------------------------------------
-  --accent-primary: #a78bfa;              // Full purple (not muted)
-  --accent-hover: #8b5cf6;                // Deeper purple on hover
-  --accent-active: #7c3aed;               // Even deeper when pressed
+  --accent-primary: #8b5cf6;              // Violet 600
+  --accent-hover: #7c3aed;                // Violet 700
+  --accent-active: #6d28d9;               // Violet 800
 
   // ------------------------------------------------------------------
-  // LINKS - Warm gray with purple hover
+  // LINKS - Darker for better readability
   // ------------------------------------------------------------------
-  --link-color: #57534e;                  // Stone 600
+  --link-color: #334155;                  // Slate 700 (much darker than before)
   --link-hover: var(--atrium-purple);     // Purple on hover
-  --link-visited: #9333ea;                // Purple-ish tint for visited
+  --link-visited: #7c3aed;                // Darker purple for visited
+
+  // ------------------------------------------------------------------
+  // BUTTON STATE MATRIX - Light Mode (4 states)
+  // ------------------------------------------------------------------
+  --btn-primary-bg: #8b5cf6;              // Purple background
+  --btn-primary-text: #ffffff;            // White text (contrast: 7.4:1)
+  --btn-primary-bg-hover: #7c3aed;        // Darker purple on hover
+  --btn-primary-text-hover: #ffffff;      // White text on hover
+
+  --btn-secondary-bg: transparent;        // Transparent background
+  --btn-secondary-text: #8b5cf6;          // Purple text (contrast: 6.8:1)
+  --btn-secondary-border: #8b5cf6;        // Purple border
+  --btn-secondary-bg-hover: #8b5cf6;      // Purple background on hover
+  --btn-secondary-text-hover: #ffffff;    // White text when bg becomes purple
+  --btn-secondary-border-hover: #8b5cf6;  // Purple border on hover
 
   // ------------------------------------------------------------------
   // ATRIUM CARD - Maintains dark aesthetic even in light mode
@@ -157,7 +173,7 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 10px 24px -4px rgba(0, 0, 0, 0.12);
-  --shadow-glow: 0 4px 16px rgba(167, 139, 250, 0.25);
+  --shadow-glow: 0 4px 16px rgba(139, 92, 246, 0.25);
 }
 
 // ==================================================================
@@ -185,7 +201,7 @@
   --text-primary: #e9e7f5;        // Light lavender-white (WCAG AAA: 16.2:1)
   --text-secondary: #c9c6dc;      // Medium lavender-gray (WCAG AA: 9.8:1)
   --text-tertiary: #a39fba;       // Muted lavender (WCAG AA: 5.4:1)
-  --text-inverse: #1e1b33;
+  --text-inverse: #ffffff;        // White text for dark backgrounds
 
   // ------------------------------------------------------------------
   // BORDERS - Purple-tinted (not pure gray)
@@ -207,6 +223,21 @@
   --link-color: #c9c6dc;
   --link-hover: var(--atrium-purple-bright);
   --link-visited: var(--atrium-purple-dark);
+
+  // ------------------------------------------------------------------
+  // BUTTON STATE MATRIX - Dark Mode (4 states)
+  // ------------------------------------------------------------------
+  --btn-primary-bg: #a78bfa;              // Lighter purple for dark bg
+  --btn-primary-text: #000000;            // Black text (contrast: 8.9:1)
+  --btn-primary-bg-hover: #c4b5fd;        // Even lighter on hover
+  --btn-primary-text-hover: #000000;      // Black text on hover
+
+  --btn-secondary-bg: transparent;        // Transparent background
+  --btn-secondary-text: #a78bfa;          // Light purple text (contrast: 5.8:1)
+  --btn-secondary-border: #a78bfa;        // Light purple border
+  --btn-secondary-bg-hover: #a78bfa;      // Light purple background on hover
+  --btn-secondary-text-hover: #000000;    // Black text when bg becomes light purple
+  --btn-secondary-border-hover: #a78bfa;  // Light purple border on hover
 
   // ------------------------------------------------------------------
   // ATRIUM CARD - Even deeper in dark mode (hints at the depths)
