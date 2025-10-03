@@ -8,6 +8,7 @@
 // ==================================================================
 
 // Container
+// T01.2: Optimized padding for mobile
 .container {
   width: 100%;
   max-width: var(--container-max-width);
@@ -15,6 +16,11 @@
   margin-right: auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
+
+  @media (max-width: 768px) {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
 }
 
 .container-narrow {
@@ -114,13 +120,14 @@
 .py-3xl { padding-top: var(--space-3xl); padding-bottom: var(--space-3xl); }
 
 // Section spacing
+// T01.2: Tightened section spacing
 .section {
-  padding-top: var(--space-3xl);
-  padding-bottom: var(--space-3xl);
-  
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+
   @media (max-width: 768px) {
-    padding-top: var(--space-2xl);
-    padding-bottom: var(--space-2xl);
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
   }
 }
 
