@@ -1,0 +1,19 @@
+# Navigation Configuration - Bridge Interface
+
+main:
+  - title: "Home"
+    url: /
+  - title: "Blog"
+    url: /posts/
+  - title: "About"
+    url: /about/
+  - title: "The Atrium"
+    url: /atrium/
+
+footer:
+  - title: "GitHub"
+    url: https://github.com/tmorgan181/Atrium
+    external: true
+  - title: "The Atrium"
+    url: https://github.com/tmorgan181/Atrium
+    external: true

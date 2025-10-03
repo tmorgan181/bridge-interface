@@ -1,0 +1,108 @@
+// Design Tokens - Bridge Interface
+// Phase 1 Static Jekyll Blog
+// These tokens are defined for Phase 1-4 portability
+
+:root {
+  // Color Tokens
+  --color-primary: #2E5266;
+  --color-primary-dark: #1E3444;
+  --color-primary-light: #4A7087;
+  --color-accent: #6E8898;
+  --color-accent-dark: #5A7280;
+  --color-accent-light: #8FA5B2;
+  
+  --color-text: #1A1A1A;
+  --color-text-light: #4A4A4A;
+  --color-text-lighter: #6A6A6A;
+  --color-background: #FFFFFF;
+  --color-background-alt: #F8F9FA;
+  --color-background-dark: #E9ECEF;
+  
+  --color-border: #DEE2E6;
+  --color-border-light: #E9ECEF;
+  --color-border-dark: #CED4DA;
+  
+  --color-link: #2E5266;
+  --color-link-hover: #1E3444;
+  --color-link-visited: #4A7087;
+  
+  --color-success: #28A745;
+  --color-warning: #FFC107;
+  --color-error: #DC3545;
+  --color-info: #17A2B8;
+  
+  // Typography Tokens
+  --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  
+  --font-size-base: 1rem;      // 16px
+  --font-size-scale: 1.25;
+  
+  --font-size-xs: 0.75rem;     // 12px
+  --font-size-sm: 0.875rem;    // 14px
+  --font-size-md: 1rem;        // 16px
+  --font-size-lg: 1.25rem;     // 20px
+  --font-size-xl: 1.5rem;      // 24px
+  --font-size-2xl: 1.875rem;   // 30px
+  --font-size-3xl: 2.25rem;    // 36px
+  --font-size-4xl: 3rem;       // 48px
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+  
+  // Spacing Tokens (4px base unit)
+  --space-xs: 0.25rem;    // 4px
+  --space-sm: 0.5rem;     // 8px
+  --space-md: 1rem;       // 16px
+  --space-lg: 1.5rem;     // 24px
+  --space-xl: 2rem;       // 32px
+  --space-2xl: 3rem;      // 48px
+  --space-3xl: 4rem;      // 64px
+  --space-4xl: 6rem;      // 96px
+  
+  // Layout Tokens
+  --container-max-width: 1200px;
+  --container-padding: var(--space-lg);
+  --content-max-width: 65ch;  // optimal reading width
+  
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  
+  // Border Tokens
+  --border-width: 1px;
+  --border-width-thick: 2px;
+  --border-style: solid;
+  
+  --radius-sm: 0.25rem;   // 4px
+  --radius-md: 0.5rem;    // 8px
+  --radius-lg: 1rem;      // 16px
+  --radius-full: 9999px;
+  
+  // Shadow Tokens
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  // Transition Tokens
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+  
+  // Z-index Tokens
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal: 400;
+  --z-tooltip: 500;
+}

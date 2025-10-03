@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include meta.html %}
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
+  {% include header.html %}
+  
+  <main id="main" class="container">
+    {{ content }}
+  </main>
+  
+  {% include footer.html %}
+  {% include analytics.html %}
+</body>
+</html>

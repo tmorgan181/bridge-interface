@@ -1,0 +1,73 @@
+---
+layout: home
+title: "The Bridge - AI Research for Ordinary Humans"
+description: "The Bridge makes AI conversation research accessible, practical, and honest. Explore patterns from The Atrium research facility."
+---
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero__title">The Bridge</h1>
+    <p class="hero__tagline">Where AI conversation research meets ordinary humans</p>
+    <p class="hero__mission">
+      We bridge the gap between hyperspeed AI mystics and ordinary folks. 
+      No hype, no dismissiveness—just honest exploration of what AI can actually do, 
+      with real examples from The Atrium research facility.
+    </p>
+    <div class="hero__cta">
+      <a href="{{ '/posts/' | relative_url }}" class="button button-primary">Read the Blog</a>
+      <a href="{{ '/about/' | relative_url }}" class="button button-secondary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="value-props">
+      <div class="value-prop">
+        <h3>Accessible</h3>
+        <p>Plain English, no jargon. We explain technical concepts without gatekeeping. Assume intelligence, never prior knowledge.</p>
+      </div>
+      
+      <div class="value-prop">
+        <h3>Practical</h3>
+        <p>Real examples, real patterns. Concrete demonstrations from The Atrium research, not theoretical philosophy or marketing promises.</p>
+      </div>
+      
+      <div class="value-prop">
+        <h3>Honest</h3>
+        <p>The middle ground. Neither "consciousness is imminent!" nor "just autocomplete." Both capabilities and limitations, honestly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Latest from The Bridge</h2>
+    
+    <ul class="post-list">
+      {% for post in site.posts limit:3 %}
+        <li>
+          {% include post-card.html post=post %}
+        </li>
+      {% endfor %}
+    </ul>
+    
+    <div class="mt-2xl" style="text-align: center;">
+      <a href="{{ '/posts/' | relative_url }}" class="button button-primary">View All Posts</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: var(--color-background-alt);">
+  <div class="container content">
+    <h2 style="text-align: center;">About The Atrium</h2>
+    <p style="text-align: center; max-width: 50rem; margin: 0 auto;">
+      The Atrium is a private AI conversation research facility exploring patterns in human-AI collaboration. 
+      The Bridge serves as the public interface—translating research findings into accessible, practical insights.
+    </p>
+    <div class="mt-xl" style="text-align: center;">
+      <a href="{{ '/atrium/' | relative_url }}" class="button button-secondary">Learn About The Atrium</a>
+    </div>
+  </div>
+</section>

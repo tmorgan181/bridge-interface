@@ -1,0 +1,15 @@
+{% comment %}
+Component: SEO Meta Tags
+Props: Uses page/post frontmatter and site config
+Usage: {% include meta.html %}
+Note: Leverages jekyll-seo-tag plugin for comprehensive SEO
+{% endcomment %}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+{% seo %}
+
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">

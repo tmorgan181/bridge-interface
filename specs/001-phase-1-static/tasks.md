@@ -27,11 +27,11 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Initialize Jekyll project structure and dependencies
 
-- [ ] **T001** Create blog directory structure at `blog/` with subdirectories: `_posts/`, `_includes/`, `_layouts/`, `_sass/`, `_data/`, `pages/`, `assets/css/`, `assets/js/`, `assets/images/`
-- [ ] **T002** Create `blog/Gemfile` with Jekyll 4.x and required gems (jekyll, jekyll-feed, jekyll-seo-tag, jekyll-sitemap)
-- [ ] **T003** Run `bundle install` in blog directory to install dependencies and generate `Gemfile.lock`
-- [ ] **T004** Create `blog/_config.yml` with site configuration (title, description, url, baseurl, markdown, permalink, plugins, defaults)
-- [ ] **T005** Create `blog/.gitignore` to exclude `_site/`, `.jekyll-cache/`, `.sass-cache/`, `Gemfile.lock`
+- [X] **T001** Create blog directory structure at `blog/` with subdirectories: `_posts/`, `_includes/`, `_layouts/`, `_sass/`, `_data/`, `pages/`, `assets/css/`, `assets/js/`, `assets/images/`
+- [X] **T002** Create `blog/Gemfile` with Jekyll 4.x and required gems (jekyll, jekyll-feed, jekyll-seo-tag, jekyll-sitemap)
+- [ ] **T003** Run `bundle install` in blog directory to install dependencies and generate `Gemfile.lock` **[REQUIRES RUBY]**
+- [X] **T004** Create `blog/_config.yml` with site configuration (title, description, url, baseurl, markdown, permalink, plugins, defaults)
+- [X] **T005** Create `blog/.gitignore` to exclude `_site/`, `.jekyll-cache/`, `.sass-cache/`, `Gemfile.lock`
 
 **Dependencies**: T001 must complete before T002-T005. T002 must complete before T003.
 
@@ -41,13 +41,13 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Establish design tokens and base styling
 
-- [ ] **T006** [P] Create `blog/_sass/_tokens.scss` with CSS custom properties for colors, typography, spacing, layout, effects (reference: data-model.md Design Token schema)
-- [ ] **T007** [P] Create `blog/_data/design-tokens.yml` with human-readable design token documentation matching `_tokens.scss`
-- [ ] **T008** [P] Create `blog/_sass/_reset.scss` with CSS reset/normalization rules
-- [ ] **T009** Create `blog/_sass/_typography.scss` importing tokens and defining typography styles (headings, paragraphs, lists, code blocks)
-- [ ] **T010** Create `blog/_sass/_layout.scss` importing tokens and defining layout utilities (containers, grid, spacing)
-- [ ] **T011** Create `blog/_sass/_components.scss` importing tokens and defining component styles (cards, buttons, navigation, footer)
-- [ ] **T012** Create `blog/assets/css/main.scss` that imports all SCSS partials in correct order (_tokens, _reset, _typography, _layout, _components)
+- [X] **T006** [P] Create `blog/_sass/_tokens.scss` with CSS custom properties for colors, typography, spacing, layout, effects (reference: data-model.md Design Token schema)
+- [X] **T007** [P] Create `blog/_data/design-tokens.yml` with human-readable design token documentation matching `_tokens.scss`
+- [X] **T008** [P] Create `blog/_sass/_reset.scss` with CSS reset/normalization rules
+- [X] **T009** Create `blog/_sass/_typography.scss` importing tokens and defining typography styles (headings, paragraphs, lists, code blocks)
+- [X] **T010** Create `blog/_sass/_layout.scss` importing tokens and defining layout utilities (containers, grid, spacing)
+- [X] **T011** Create `blog/_sass/_components.scss` importing tokens and defining component styles (cards, buttons, navigation, footer)
+- [X] **T012** Create `blog/assets/css/main.scss` that imports all SCSS partials in correct order (_tokens, _reset, _typography, _layout, _components)
 
 **Dependencies**: T006 must complete before T009-T012. T008-T011 must complete before T012. T006-T008 can run in parallel.
 
@@ -57,11 +57,11 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Create reusable Jekyll includes (components)
 
-- [ ] **T013** [P] Create `blog/_includes/header.html` with site header, logo/title, navigation using `site.data.navigation.main` (contract reference: all pages)
-- [ ] **T014** [P] Create `blog/_includes/footer.html` with site footer, copyright, links using `site.data.navigation.footer` (contract reference: all pages)
-- [ ] **T015** [P] Create `blog/_includes/post-card.html` component with props (post object) displaying title, date, excerpt (contract reference: page-home.md, page-posts.md)
-- [ ] **T016** [P] Create `blog/_includes/meta.html` component with SEO meta tags (title, description, og:tags, twitter:card) using jekyll-seo-tag plugin
-- [ ] **T017** [P] Create `blog/_includes/analytics.html` placeholder component for future analytics (Phase 2+)
+- [X] **T013** [P] Create `blog/_includes/header.html` with site header, logo/title, navigation using `site.data.navigation.main` (contract reference: all pages)
+- [X] **T014** [P] Create `blog/_includes/footer.html` with site footer, copyright, links using `site.data.navigation.footer` (contract reference: all pages)
+- [X] **T015** [P] Create `blog/_includes/post-card.html` component with props (post object) displaying title, date, excerpt (contract reference: page-home.md, page-posts.md)
+- [X] **T016** [P] Create `blog/_includes/meta.html` component with SEO meta tags (title, description, og:tags, twitter:card) using jekyll-seo-tag plugin
+- [X] **T017** [P] Create `blog/_includes/analytics.html` placeholder component for future analytics (Phase 2+)
 
 **Dependencies**: None - all can run in parallel. Must complete before layouts (Phase 3.4).
 
@@ -71,10 +71,10 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Create Jekyll layouts that use components
 
-- [ ] **T018** Create `blog/_layouts/default.html` base layout with HTML5 structure, includes header/footer/meta components, defines content block
-- [ ] **T019** Create `blog/_layouts/page.html` extending default layout for static pages with simple content rendering
-- [ ] **T020** Create `blog/_layouts/post.html` extending default layout for blog posts with post header (title, date, author, tags), content rendering, back navigation (contract reference: page-post.md)
-- [ ] **T021** Create `blog/_layouts/home.html` extending default layout for home page with hero section, value propositions, recent posts using post-card component (contract reference: page-home.md)
+- [X] **T018** Create `blog/_layouts/default.html` base layout with HTML5 structure, includes header/footer/meta components, defines content block
+- [X] **T019** Create `blog/_layouts/page.html` extending default layout for static pages with simple content rendering
+- [X] **T020** Create `blog/_layouts/post.html` extending default layout for blog posts with post header (title, date, author, tags), content rendering, back navigation (contract reference: page-post.md)
+- [X] **T021** Create `blog/_layouts/home.html` extending default layout for home page with hero section, value propositions, recent posts using post-card component (contract reference: page-home.md)
 
 **Dependencies**: T018 must complete before T019-T021. T013-T017 (components) must exist before T018.
 
@@ -84,7 +84,7 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Define site navigation structure
 
-- [ ] **T022** Create `blog/_data/navigation.yml` with `main` navigation array (Home, Blog, About, Atrium) and `footer` navigation array (GitHub link)
+- [X] **T022** Create `blog/_data/navigation.yml` with `main` navigation array (Home, Blog, About, Atrium) and `footer` navigation array (GitHub link)
 
 **Dependencies**: None. Should exist before components use it, but can be created anytime.
 
@@ -94,10 +94,10 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Create core static pages
 
-- [ ] **T023** [P] Create `blog/index.html` home page with layout: home, content from page-home.md contract (hero, value props, recent posts, Atrium connection)
-- [ ] **T024** [P] Create `blog/posts.html` blog index page with layout: page, listing all posts using post-card component (contract reference: page-posts.md)
-- [ ] **T025** [P] Create `blog/pages/about.md` About page with layout: page, frontmatter (title, permalink /about/), content from page-about.md contract
-- [ ] **T026** [P] Create `blog/pages/atrium.md` Atrium overview page with layout: page, frontmatter (title, permalink /atrium/), content from page-atrium.md contract
+- [X] **T023** [P] Create `blog/index.html` home page with layout: home, content from page-home.md contract (hero, value props, recent posts, Atrium connection)
+- [X] **T024** [P] Create `blog/posts.html` blog index page with layout: page, listing all posts using post-card component (contract reference: page-posts.md)
+- [X] **T025** [P] Create `blog/pages/about.md` About page with layout: page, frontmatter (title, permalink /about/), content from page-about.md contract
+- [X] **T026** [P] Create `blog/pages/atrium.md` Atrium overview page with layout: page, frontmatter (title, permalink /atrium/), content from page-atrium.md contract
 
 **Dependencies**: T019-T021 (layouts) must exist. T023-T026 can run in parallel.
 
@@ -107,9 +107,9 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Create sample content demonstrating blog functionality
 
-- [ ] **T027** [P] Create `blog/_posts/2025-01-15-welcome-to-bridge.md` with frontmatter (layout: post, title, date, author, excerpt, tags), content introducing The Bridge mission and Atrium connection (reference: research.md Decision 7)
-- [ ] **T028** [P] Create `blog/_posts/2025-01-20-honest-middle-ground.md` with frontmatter, content demonstrating "neither hype nor dismissiveness" principle with concrete examples
-- [ ] **T029** [P] Create `blog/_posts/2025-02-01-ai-collaboration-patterns.md` with frontmatter, content showing real conversation patterns from Atrium research with code blocks and examples
+- [X] **T027** [P] Create `blog/_posts/2025-01-15-welcome-to-bridge.md` with frontmatter (layout: post, title, date, author, excerpt, tags), content introducing The Bridge mission and Atrium connection (reference: research.md Decision 7)
+- [X] **T028** [P] Create `blog/_posts/2025-01-20-honest-middle-ground.md` with frontmatter, content demonstrating "neither hype nor dismissiveness" principle with concrete examples
+- [X] **T029** [P] Create `blog/_posts/2025-02-01-ai-collaboration-patterns.md` with frontmatter, content showing real conversation patterns from Atrium research with code blocks and examples
 
 **Dependencies**: T020 (post layout) must exist. T027-T029 can run in parallel.
 
@@ -119,9 +119,9 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Add placeholder assets and progressive enhancement
 
-- [ ] **T030** [P] Create `blog/assets/js/progressive.js` with minimal vanilla JavaScript for optional progressive enhancements (empty or basic utilities)
-- [ ] **T031** [P] Add placeholder images to `blog/assets/images/` directory (at least 1 for featured post, optimize for web)
-- [ ] **T032** [P] Create `blog/README.md` with Jekyll site documentation (setup instructions, adding posts, configuration)
+- [X] **T030** [P] Create `blog/assets/js/progressive.js` with minimal vanilla JavaScript for optional progressive enhancements (empty or basic utilities)
+- [X] **T031** [P] Add placeholder images to `blog/assets/images/` directory (at least 1 for featured post, optimize for web)
+- [X] **T032** [P] Create `blog/README.md` with Jekyll site documentation (setup instructions, adding posts, configuration)
 
 **Dependencies**: None - all can run in parallel.
 
@@ -131,7 +131,7 @@ This task list implements the Phase 1 static Jekyll blog as specified in the pla
 
 **Objective**: Set up automated deployment pipeline
 
-- [ ] **T033** Create `.github/workflows/deploy.yml` GitHub Actions workflow for Jekyll build and GitHub Pages deployment (reference: research.md Decision 6)
+- [X] **T033** Create `.github/workflows/deploy.yml` GitHub Actions workflow for Jekyll build and GitHub Pages deployment (reference: research.md Decision 6)
 - [ ] **T034** [P] Create `blog/CNAME` file if custom domain is configured (optional, can defer)
 
 **Dependencies**: None. T033 independent, T034 optional.

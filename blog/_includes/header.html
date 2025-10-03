@@ -1,0 +1,24 @@
+{% comment %}
+Component: Site Header
+Props: None (uses site.data.navigation.main and site config)
+Usage: {% include header.html %}
+{% endcomment %}
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-container">
+      <a href="{{ '/' | relative_url }}" class="site-title">
+        {{ site.title }}
+      </a>
+      
+      <nav class="site-nav" aria-label="Main navigation">
+        {% for item in site.data.navigation.main %}
+          <a href="{{ item.url | relative_url }}" 
+             {% if page.url == item.url %}class="active"{% endif %}>
+            {{ item.title }}
+          </a>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,52 @@
+# Site Settings
+title: "The Bridge"
+description: "Where AI conversation research meets ordinary humans"
+url: "https://bridge.atrium.dev"
+baseurl: ""
+author: "Trenton Morgan"
+
+# Build Settings
+markdown: kramdown
+permalink: /posts/:title/
+timezone: America/Chicago
+
+# Collections
+collections_dir: .
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules/
+  - vendor/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      published: true
+  - scope:
+      path: "pages"
+      type: "pages"
+    values:
+      layout: "page"
+
+# SEO
+social:
+  name: Trenton Morgan
+  links:
+    - https://github.com/tmorgan181
+
+# Feed
+feed:
+  path: feed.xml

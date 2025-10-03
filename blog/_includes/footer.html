@@ -1,0 +1,24 @@
+{% comment %}
+Component: Site Footer
+Props: None (uses site.data.navigation.footer and site config)
+Usage: {% include footer.html %}
+{% endcomment %}
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author }}. The Bridge - Where AI research meets ordinary humans.</p>
+      
+      {% if site.data.navigation.footer %}
+      <nav class="footer-links" aria-label="Footer navigation">
+        {% for item in site.data.navigation.footer %}
+          <a href="{{ item.url }}" 
+             {% if item.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+            {{ item.title }}
+          </a>
+        {% endfor %}
+      </nav>
+      {% endif %}
+    </div>
+  </div>
+</footer>

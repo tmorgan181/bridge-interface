@@ -1,0 +1,12 @@
+---
+# Front matter required for Jekyll to process SCSS
+---
+
+// Main Stylesheet - Bridge Interface
+// Import order matters: tokens → reset → base styles → components
+
+@import "tokens";
+@import "reset";
+@import "typography";
+@import "layout";
+@import "components";

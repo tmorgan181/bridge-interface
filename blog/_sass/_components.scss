@@ -1,0 +1,306 @@
+// Component Styles - Bridge Interface
+
+// Header
+.site-header {
+  background-color: var(--color-background);
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding: var(--space-lg) 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .site-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    text-decoration: none;
+    
+    &:hover {
+      color: var(--color-primary-dark);
+    }
+  }
+}
+
+// Navigation
+.site-nav {
+  display: flex;
+  gap: var(--space-lg);
+  
+  a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-fast);
+    
+    &:hover {
+      color: var(--color-primary);
+    }
+    
+    &.active {
+      color: var(--color-primary);
+    }
+  }
+  
+  @media (max-width: 640px) {
+    gap: var(--space-md);
+    font-size: var(--font-size-sm);
+  }
+}
+
+// Footer
+.site-footer {
+  background-color: var(--color-background-alt);
+  border-top: var(--border-width) solid var(--color-border);
+  padding: var(--space-2xl) 0;
+  margin-top: var(--space-4xl);
+  
+  .footer-content {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+    
+    a {
+      color: var(--color-text-light);
+      text-decoration: none;
+      
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+}
+
+// Post Card
+.post-card {
+  padding: var(--space-lg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-background);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  
+  .post-card__title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+    
+    a {
+      color: var(--color-text);
+      text-decoration: none;
+      
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+  
+  .post-card__date {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-lighter);
+    margin-bottom: var(--space-md);
+  }
+  
+  .post-card__excerpt {
+    color: var(--color-text-light);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: 0;
+  }
+}
+
+// Post List
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+// Post Header
+.post-header {
+  margin-bottom: var(--space-2xl);
+  
+  .post-title {
+    margin-bottom: var(--space-md);
+  }
+  
+  .post-meta {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+    color: var(--color-text-lighter);
+    font-size: var(--font-size-sm);
+  }
+  
+  .post-author {
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+// Post Tags
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-md);
+  
+  li {
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--color-background-alt);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+  }
+}
+
+// Post Content
+.post-content {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  
+  img {
+    margin: var(--space-xl) 0;
+    border-radius: var(--radius-md);
+  }
+}
+
+// Post Footer
+.post-footer {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-xl);
+  border-top: var(--border-width) solid var(--color-border);
+  
+  .back-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Hero Section
+.hero {
+  text-align: center;
+  padding: var(--space-4xl) 0;
+  
+  @media (max-width: 768px) {
+    padding: var(--space-3xl) 0;
+  }
+  
+  .hero__title {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-md);
+    
+    @media (max-width: 768px) {
+      font-size: var(--font-size-3xl);
+    }
+  }
+  
+  .hero__tagline {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-lg);
+    
+    @media (max-width: 768px) {
+      font-size: var(--font-size-lg);
+    }
+  }
+  
+  .hero__cta {
+    display: inline-flex;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+    
+    @media (max-width: 640px) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}
+
+// Button
+.button {
+  display: inline-block;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  text-align: center;
+  
+  &-primary {
+    background-color: var(--color-primary);
+    color: white;
+    
+    &:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+  
+  &-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: var(--border-width-thick) solid var(--color-primary);
+    
+    &:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
+  }
+}
+
+// Value Propositions
+.value-props {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin: var(--space-3xl) 0;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+  
+  .value-prop {
+    text-align: center;
+    padding: var(--space-xl);
+    
+    h3 {
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+    
+    p {
+      color: var(--color-text-light);
+    }
+  }
+}

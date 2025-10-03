@@ -1,0 +1,23 @@
+---
+layout: page
+title: "Blog Posts"
+permalink: /posts/
+description: "Explore AI conversation research made accessible - patterns, examples, and insights from The Atrium."
+---
+
+<p class="mb-2xl">
+  Exploring AI conversation patterns, collaboration techniques, and research insights. 
+  Written in plain English for ordinary folks who want to understand what's really happening with AI.
+</p>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      {% include post-card.html post=post %}
+    </li>
+  {% else %}
+    <li>
+      <p>No posts yet. Check back soon!</p>
+    </li>
+  {% endfor %}
+</ul>

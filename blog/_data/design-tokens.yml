@@ -1,0 +1,97 @@
+# Design Tokens Documentation - Bridge Interface
+# This file documents all design tokens defined in _sass/_tokens.scss
+
+colors:
+  primary:
+    token: --color-primary
+    value: "#2E5266"
+    usage: "Primary brand color, main CTAs, links"
+  
+  accent:
+    token: --color-accent
+    value: "#6E8898"
+    usage: "Accent color, secondary elements, highlights"
+  
+  text:
+    token: --color-text
+    value: "#1A1A1A"
+    usage: "Primary text color"
+  
+  background:
+    token: --color-background
+    value: "#FFFFFF"
+    usage: "Main background color"
+
+typography:
+  font-base:
+    token: --font-base
+    value: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+    usage: "System font stack for body text"
+  
+  font-mono:
+    token: --font-mono
+    value: "'SFMono-Regular', Consolas, monospace"
+    usage: "Monospace font for code blocks"
+  
+  font-size-base:
+    token: --font-size-base
+    value: "1rem (16px)"
+    usage: "Base font size for body text"
+  
+  line-height-normal:
+    token: --line-height-normal
+    value: "1.5"
+    usage: "Standard line height for readability"
+
+spacing:
+  space-xs:
+    token: --space-xs
+    value: "0.25rem (4px)"
+    usage: "Extra small spacing"
+  
+  space-sm:
+    token: --space-sm
+    value: "0.5rem (8px)"
+    usage: "Small spacing"
+  
+  space-md:
+    token: --space-md
+    value: "1rem (16px)"
+    usage: "Medium spacing (default)"
+  
+  space-lg:
+    token: --space-lg
+    value: "1.5rem (24px)"
+    usage: "Large spacing between sections"
+  
+  space-xl:
+    token: --space-xl
+    value: "2rem (32px)"
+    usage: "Extra large spacing"
+
+layout:
+  container-max-width:
+    token: --container-max-width
+    value: "1200px"
+    usage: "Maximum width for main container"
+  
+  content-max-width:
+    token: --content-max-width
+    value: "65ch"
+    usage: "Optimal reading width for text content"
+
+effects:
+  shadow-md:
+    token: --shadow-md
+    value: "0 4px 6px rgba(0,0,0,0.1)"
+    usage: "Standard box shadow for cards"
+  
+  radius-md:
+    token: --radius-md
+    value: "0.5rem (8px)"
+    usage: "Standard border radius"
+  
+  transition-base:
+    token: --transition-base
+    value: "250ms ease-in-out"
+    usage: "Standard transition timing"
