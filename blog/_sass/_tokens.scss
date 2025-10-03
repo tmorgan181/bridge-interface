@@ -114,7 +114,7 @@
   --bg-primary: #f8fafc;          // Slate 50 - very light gray (not harsh white)
   --bg-secondary: #f1f5f9;        // Slate 100 - visible contrast
   --bg-tertiary: #e2e8f0;         // Slate 200 - for code blocks
-  --bg-elevated: #ffffff;         // White cards pop against gray background
+  --bg-elevated: #f8fafc;         // Slate 50 - cards match primary (no pure white)
 
   // ------------------------------------------------------------------
   // TEXT - Much darker for better readability (no more beige blindness)
@@ -122,7 +122,7 @@
   --text-primary: #0f172a;        // Slate 900 - much darker (contrast: 19.5:1)
   --text-secondary: #334155;      // Slate 700 - darker gray (contrast: 7.2:1)
   --text-tertiary: #64748b;       // Slate 500 - still readable (contrast: 4.6:1)
-  --text-inverse: #ffffff;        // White text for dark backgrounds
+  --text-inverse: #f8fafc;        // Slate 50 - near-white for dark backgrounds
 
   // ------------------------------------------------------------------
   // BORDERS - More visible borders
@@ -149,15 +149,15 @@
   // BUTTON STATE MATRIX - Light Mode (4 states)
   // ------------------------------------------------------------------
   --btn-primary-bg: #8b5cf6;              // Purple background
-  --btn-primary-text: #ffffff;            // White text (contrast: 7.4:1)
+  --btn-primary-text: #f8fafc;            // Near-white text (contrast: 7.3:1)
   --btn-primary-bg-hover: #7c3aed;        // Darker purple on hover
-  --btn-primary-text-hover: #ffffff;      // White text on hover
+  --btn-primary-text-hover: #f8fafc;      // Near-white text on hover
 
   --btn-secondary-bg: transparent;        // Transparent background
   --btn-secondary-text: #8b5cf6;          // Purple text (contrast: 6.8:1)
   --btn-secondary-border: #8b5cf6;        // Purple border
   --btn-secondary-bg-hover: #8b5cf6;      // Purple background on hover
-  --btn-secondary-text-hover: #ffffff;    // White text when bg becomes purple
+  --btn-secondary-text-hover: #f8fafc;    // Near-white text when bg becomes purple
   --btn-secondary-border-hover: #8b5cf6;  // Purple border on hover
 
   // ------------------------------------------------------------------
@@ -201,7 +201,7 @@
   --text-primary: #e9e7f5;        // Light lavender-white (WCAG AAA: 16.2:1)
   --text-secondary: #c9c6dc;      // Medium lavender-gray (WCAG AA: 9.8:1)
   --text-tertiary: #a39fba;       // Muted lavender (WCAG AA: 5.4:1)
-  --text-inverse: #ffffff;        // White text for dark backgrounds
+  --text-inverse: #1e1b33;        // Near-black (dark indigo) for light backgrounds
 
   // ------------------------------------------------------------------
   // BORDERS - Purple-tinted (not pure gray)
@@ -228,15 +228,15 @@
   // BUTTON STATE MATRIX - Dark Mode (4 states)
   // ------------------------------------------------------------------
   --btn-primary-bg: #a78bfa;              // Lighter purple for dark bg
-  --btn-primary-text: #000000;            // Black text (contrast: 8.9:1)
+  --btn-primary-text: #0f172a;            // Near-black text (Slate 900, contrast: 8.7:1)
   --btn-primary-bg-hover: #c4b5fd;        // Even lighter on hover
-  --btn-primary-text-hover: #000000;      // Black text on hover
+  --btn-primary-text-hover: #0f172a;      // Near-black text on hover
 
   --btn-secondary-bg: transparent;        // Transparent background
   --btn-secondary-text: #a78bfa;          // Light purple text (contrast: 5.8:1)
   --btn-secondary-border: #a78bfa;        // Light purple border
   --btn-secondary-bg-hover: #a78bfa;      // Light purple background on hover
-  --btn-secondary-text-hover: #000000;    // Black text when bg becomes light purple
+  --btn-secondary-text-hover: #0f172a;    // Near-black text when bg becomes light purple
   --btn-secondary-border-hover: #a78bfa;  // Light purple border on hover
 
   // ------------------------------------------------------------------
