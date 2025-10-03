@@ -80,9 +80,10 @@ p {
 // ------------------------------------------------------------------
 // Links
 // Theme-aware link colors with purple hover
+// EXCLUDE buttons from link styling to prevent override
 // ------------------------------------------------------------------
 
-a {
+a:not(.btn):not(.button):not(.btn-primary):not(.btn-secondary):not(.btn-atrium):not(.button-primary):not(.button-secondary):not(.post-card-link):not(.nav-link):not(.atrium-link):not(.site-title) {
   color: var(--link-color);
   text-decoration: underline;
   transition: color var(--transition-base);
