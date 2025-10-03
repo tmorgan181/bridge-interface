@@ -147,6 +147,11 @@
       // Update data-theme attribute
       document.documentElement.setAttribute('data-theme', theme);
 
+      // Update aria-checked for accessibility (switch role)
+      if (this.themeToggle) {
+        this.themeToggle.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+      }
+
       // Update internal state
       this.currentTheme = theme;
       this.themeSource = 'localStorage';

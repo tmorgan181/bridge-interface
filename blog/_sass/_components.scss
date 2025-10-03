@@ -10,41 +10,70 @@
 // ==================================================================
 
 // ------------------------------------------------------------------
-// Theme Toggle Button
-// Circular button with sun/moon icons, purple glow on hover
+// Theme Toggle Switch
+// Sleek horizontal toggle switch with sliding thumb
+// Light mode: thumb on left, Dark mode: thumb on right
 // ------------------------------------------------------------------
 
 .theme-toggle {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-full);
-  padding: var(--space-sm);
+  background: transparent;
+  border: none;
+  padding: var(--space-xs);
   cursor: pointer;
-  transition: all var(--transition-base);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
+  transition: opacity var(--transition-base);
 
   &:hover {
-    border-color: var(--accent-hover);
-    box-shadow: var(--shadow-glow);
+    opacity: 0.8;
   }
 
   &:focus {
     outline: none;
-    border-color: var(--border-focus);
-    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
+    .toggle-track {
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
+    }
   }
 
-  // Icon display logic (toggled via data-theme attribute)
-  .icon-sun { display: none; }
-  .icon-moon { display: block; }
+  .toggle-track {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-primary);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    padding: 2px;
 
-  [data-theme="dark"] & {
-    .icon-sun { display: block; }
-    .icon-moon { display: none; }
+    &:hover {
+      border-color: var(--accent-hover);
+      box-shadow: var(--shadow-glow);
+    }
+  }
+
+  .toggle-thumb {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    transition: all var(--transition-base);
+    left: 2px;
+    box-shadow: var(--shadow-sm);
+
+    // Light mode: thumb on left
+    [data-theme="light"] & {
+      transform: translateX(0);
+    }
+
+    // Dark mode: thumb slides to right
+    [data-theme="dark"] & {
+      transform: translateX(24px);
+      background: var(--atrium-purple-bright);
+      box-shadow: var(--glow-purple);
+    }
   }
 }
 
@@ -161,7 +190,24 @@
 // ------------------------------------------------------------------
 // Post Card
 // Elevated background, border, hover lift with purple glow
+// Entire card is clickable via wrapper link
 // ------------------------------------------------------------------
+
+.post-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  &:hover .post-card {
+    border-color: var(--accent-hover);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  &:hover .post-card__title {
+    color: var(--accent-hover);
+  }
+}
 
 .post-card {
   padding: var(--space-xl);
@@ -170,27 +216,12 @@
   background-color: var(--bg-elevated);
   transition: all var(--transition-base);
 
-  &:hover {
-    border-color: var(--accent-hover);
-    box-shadow: var(--shadow-glow);
-    transform: translateY(-2px);
-  }
-
   .post-card__title {
     font-size: var(--font-size-2xl);
     margin-bottom: var(--space-sm);
     color: var(--text-primary);
     font-weight: var(--font-weight-bold);
-
-    a {
-      color: var(--text-primary);
-      text-decoration: none;
-      transition: color var(--transition-base);
-
-      &:hover {
-        color: var(--accent-hover);
-      }
-    }
+    transition: color var(--transition-base);
   }
 
   .post-card__date {
@@ -201,7 +232,7 @@
   }
 
   .post-card__excerpt {
-    color: var(--text-secondary);
+    color: var(--text-primary);
     line-height: var(--line-height-relaxed);
     margin-bottom: 0;
   }
@@ -242,6 +273,19 @@
 
   .post-author {
     font-weight: var(--font-weight-medium);
+  }
+}
+
+// ------------------------------------------------------------------
+// Page Header
+// ------------------------------------------------------------------
+
+.page-header {
+  margin-bottom: var(--space-3xl);
+
+  h1 {
+    text-align: left;
+    margin-bottom: var(--space-2xl);
   }
 }
 
@@ -310,10 +354,10 @@
 
 .hero {
   text-align: center;
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
 
   @media (max-width: 768px) {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-xl) 0;
   }
 
   .hero__title {
@@ -364,12 +408,23 @@
   border: none;
   cursor: pointer;
 
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+  }
+
   &-primary {
     background: var(--accent-primary);
     color: var(--text-inverse);
 
     &:hover {
       background: var(--accent-hover);
+      color: var(--text-inverse);
       box-shadow: var(--shadow-glow);
       transform: translateY(-1px);
     }
@@ -382,11 +437,11 @@
 
   &-secondary {
     background: transparent;
-    color: var(--accent-primary);
+    color: var(--accent-primary) !important;
     border: 2px solid var(--accent-primary);
 
     &:hover {
-      background: var(--accent-hover);
+      background: var(--accent-primary);
       border-color: var(--accent-hover);
       color: var(--text-inverse);
     }
@@ -520,25 +575,24 @@
 
   .value-prop {
     text-align: center;
-    padding: var(--space-xl);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-primary);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-base);
-
-    &:hover {
-      border-color: var(--accent-hover);
-      box-shadow: var(--shadow-glow);
-    }
+    padding: var(--space-2xl);
+    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%);
+    border: 1px solid var(--atrium-purple);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    position: relative;
 
     h3 {
-      margin-top: var(--space-md);
-      margin-bottom: var(--space-sm);
-      color: var(--text-primary);
+      margin-top: 0;
+      margin-bottom: var(--space-md);
+      color: var(--atrium-purple);
+      font-weight: var(--font-weight-bold);
     }
 
     p {
       color: var(--text-secondary);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: 0;
     }
   }
 }
