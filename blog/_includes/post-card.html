@@ -4,16 +4,16 @@ Props: post (Jekyll post object with .title, .url, .date, .excerpt, .author)
 Usage: {% include post-card.html post=post %}
 {% endcomment %}
 
-<article class="post-card">
-  <h2 class="post-card__title">
-    <a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
-  </h2>
-  
-  <time class="post-card__date" datetime="{{ include.post.date | date_to_xmlschema }}">
-    {{ include.post.date | date: "%B %d, %Y" }}
-  </time>
-  
-  <p class="post-card__excerpt">
-    {{ include.post.excerpt | strip_html | truncatewords: 30 }}
-  </p>
-</article>
+<a href="{{ include.post.url | relative_url }}" class="post-card-link">
+  <article class="post-card">
+    <h2 class="post-card__title">{{ include.post.title }}</h2>
+
+    <time class="post-card__date" datetime="{{ include.post.date | date_to_xmlschema }}">
+      {{ include.post.date | date: "%B %d, %Y" }}
+    </time>
+
+    <p class="post-card__excerpt">
+      {{ include.post.excerpt | strip_html | truncatewords: 30 }}
+    </p>
+  </article>
+</a>
